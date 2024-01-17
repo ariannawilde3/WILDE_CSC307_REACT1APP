@@ -1,29 +1,64 @@
-// src/index.js
-import React from "react";
-import ReactDOMClient from "react-dom/client";
-import MyApp from "./MyApp";
-import "./index.css";
-
-const container = document.getElementById("root");
-
-// Create a root
-const root = ReactDOMClient.createRoot(container);
-
-// Initial render:
-root.render(<MyApp />);
-// src/MyApp.js
-import React from "react";
-
-// src/MyApp.js
-import React from "react";
+import React, { useState } from "react";
 import Table from "./Table";
 
 function MyApp() {
+  const [characters, setCharacters] = useState([
+    {
+      name: "Charlie",
+      job: "Janitor"
+    },
+    {
+      name: "Mac",
+      job: "Bouncer"
+    },
+    {
+      name: "Dee",
+      job: "Aspring actress"
+    },
+    {
+      name: "Dennis",
+      job: "Bartender"
+    }
+  ]);
+
+  function removeOneCharacter(index) {
+    const updated = characters.filter((character, i) => {
+      return i !== index;
+    });
+    setCharacters(updated);
+  }
+  
   return (
     <div className="container">
-      <Table />
+      <Table
+        characterData={characters}
+        removeCharacter={removeOneCharacter}
+      />
     </div>
   );
+
 }
+
+// src/MyApp.js
+const characters = [
+  {
+    name: "Charlie",
+    job: "Janitor"
+  },
+  {
+    name: "Mac",
+    job: "Bouncer"
+  },
+  {
+    name: "Dee",
+    job: "Aspring actress"
+  },
+  {
+    name: "Dennis",
+    job: "Bartender"
+  }
+];
+
+
 
 export default MyApp;
