@@ -1,9 +1,11 @@
 // backend.js
 import express from "express";
+import cors from "cors";
 
 const app = express();
 const port = 8000;
 
+app.use(cors());
 app.use(express.json());
 
 const findUserByNameAndJob = (name, job) => {
@@ -91,9 +93,9 @@ const addUser = (user) => {
   };
   
 app.post("/users", (req, res) => {
-const userToAdd = req.body;
-addUser(userToAdd);
-res.send();
+  const userToAdd = req.body;
+  addUser(userToAdd);
+  res.send(201);
 });
 
 const users = {
