@@ -7,7 +7,7 @@ function MyApp() {
   const [characters, setCharacters] = useState([]);
   
   function removeOneCharacter(index) {
-    let characterId = characters[index].id;
+    let characterId = characters[index]._id;
     let removeUser = fetch(`http://localhost:8000/users/${characterId}`, {
       method : "DELETE",
     })
@@ -77,27 +77,6 @@ function fetchUsers() {
   const promise = fetch("http://localhost:8000/users");
   return promise;
 }
-
-
-// src/MyApp.js
-const characters = [
-  {
-    name: "Charlie",
-    job: "Janitor"
-  },
-  {
-    name: "Mac",
-    job: "Bouncer"
-  },
-  {
-    name: "Dee",
-    job: "Aspring actress"
-  },
-  {
-    name: "Dennis",
-    job: "Bartender"
-  }
-];
 
 
 
